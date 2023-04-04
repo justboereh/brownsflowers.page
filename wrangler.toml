@@ -1,0 +1,6 @@
+name = "brownsflowers"
+main = "./.output/server/index.mjs"
+compatibility_date = "2023-04-04"
+
+[site]
+bucket = ".output/public"
