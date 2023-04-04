@@ -1,6 +1,4 @@
-interface Env {
-    BOUQUETS: KVNamespace
-}
+import { Env } from '~constants/types'
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
     const { params, env } = context

@@ -32,11 +32,14 @@ export type Flower = {
     sizes: Array<FlowerSize>
 }
 
-
 export type FlowersSearchParams = {
     q?: string
     types?: string
     occasions?: string
     flowers?: string
     colors?: string
+}
+
+export interface Env {
+    BOUQUETS: KVNamespace
 }
