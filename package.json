@@ -4,7 +4,7 @@
     "scripts": {
         "build": "nuxt build",
         "dev:nuxt": "nuxt dev",
-        "dev:functions": "wrangler pages dev --compatibility-date=2023-04-03 .",
+        "dev:functions": "wrangler pages dev --compatibility-date=2023-04-03 . --kv=BOUQUETS",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare"
