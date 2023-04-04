@@ -1,8 +1,6 @@
 import Flowers from '~constants/flowers'
-import type {FlowersSearchParams} from '~constansts/types'
 
 const FlowersLimit = 16
-
 
 export const onRequestGet: PagesFunction = ({ request }) => {
     const params = new URL(request.url).searchParams
@@ -14,10 +12,7 @@ export const onRequestGet: PagesFunction = ({ request }) => {
         if (flowersResponse.length === FlowersLimit) break
 
         const addFlower = true
-
-        if (params.q)
-
     }
 
-     return new Response(JSON.stringify(flowersResponse))
+    return new Response(JSON.stringify(flowersResponse))
 }
