@@ -1,0 +1,20 @@
+{
+    "name": "nuxt-app",
+    "private": true,
+    "scripts": {
+        "build": "nuxt build",
+        "dev:nuxt": "nuxt dev",
+        "dev:functions": "wrangler pages dev --compatibility-date=2023-04-03 .",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "^4.20230321.0",
+        "@types/node": "^18.15.11",
+        "@vueuse/core": "^9.13.0",
+        "nuxt": "^3.3.2",
+        "nuxt-windicss": "^2.6.0",
+        "typescript": "^5.0.3"
+    }
+}

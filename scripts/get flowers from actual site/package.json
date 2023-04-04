@@ -1,0 +1,18 @@
+{
+    "name": "get-flowers-from-actual-site",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "jsdom": "^21.1.1",
+        "lodash": "^4.17.21",
+        "puppeteer": "^19.8.3"
+    }
+}
