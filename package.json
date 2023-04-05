@@ -1,5 +1,5 @@
 {
-    "name": "nuxt-app",
+    "name": "brownsflowers",
     "private": true,
     "scripts": {
         "build": "nuxt build",
@@ -10,11 +10,10 @@
     },
     "devDependencies": {
         "@vueuse/core": "^9.13.0",
-        "nuxt": "^3.3.2",
+        "nuxt": "^3.3.3",
         "nuxt-windicss": "^2.6.0"
     },
     "dependencies": {
-        "deta": "^1.1.0",
-        "mysql2": "^3.2.0"
+        "deta": "^1.1.0"
     }
 }
