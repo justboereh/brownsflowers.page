@@ -3,3 +3,4 @@ micros:
   - name: brownsflowers
     src: ./
     engine: nuxt
+    public: true

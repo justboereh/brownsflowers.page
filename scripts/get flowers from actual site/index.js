@@ -117,7 +117,7 @@ async function getFilters(page) {
 
             for (const input of inputs) {
                 filters.push({
-                    name: legend + 's',
+                    name: legend.toLowerCase() + 's',
                     value: input.getAttribute('name'),
                     href: input.value,
                 })
@@ -202,12 +202,19 @@ async function getFlowers(page) {
                 '.ymalPdp .m-product-mini .m-category-flower-link'
             )
 
-            for (const element of elements) ymal.push(element.innerText)
+            for (const element of elements) {
+                const slug = element.innerText
+                    .toLowerCase()
+                    .replaceAll(' ', '-')
+                    .replaceAll(/[^a-zA-Z0-9\-]/g, '')
+
+                ymal.push(slug)
+            }
 
             return ymal
         })
 
-        flower.sizes = await page.evaluate(() => {
+        flower.sizes = await page.evaluate((flower) => {
             function capitalize(str) {
                 return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
             }
@@ -221,6 +228,7 @@ async function getFlowers(page) {
                     name: capitalize(
                         element.querySelector('.label-alt-text').innerText
                     ),
+                    price: element.querySelector('#-price').innerText,
                     images: [],
                 }
 
@@ -230,15 +238,17 @@ async function getFlowers(page) {
                     document.querySelectorAll('#pdpThumbImg a img')
 
                 for (const element of imageElements) {
+                    if (element.src === flower.href) continue
+
                     const id = element.src.split('/').slice(-1)
 
                     const url = '//assets.eflorist.com/assets/products'
 
                     size.images.push({
-                        thumbnail: element.src,
+                        thumbnail: `${url}/ETH_/${id}`,
                         normal: `${url}/PHR_/${id}`,
                         zoom: `${url}/PZM_/${id}`,
-                        alt: element.getAttribute('alt'),
+                        alt: element.getAttribute('alt').split(',')[0],
                     })
                 }
 
@@ -246,7 +256,9 @@ async function getFlowers(page) {
             }
 
             return sizes
-        })
+        }, flower)
+
+        flower.starting = flower.sizes[0].price
 
         flowers[index] = flower
     }
@@ -280,7 +292,4 @@ async function autoScroll(page) {
     })
 }
 
-
-
 /** */
-
