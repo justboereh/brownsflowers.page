@@ -1,9 +1,12 @@
-const API_BASEURL =
-    process.env.NODE_ENV === 'production'
-        ? process.env.API_BASEURL_DEV
-        : process.env.API_BASEURL_PROD
+declare global {
+    namespace NodeJS {
+        interface ProcessEnv {
+            DATABASE_URL: string
+            DETA_PROJECT_KEY: string
+        }
+    }
+}
 
 export default defineNuxtConfig({
     modules: ['nuxt-windicss'],
-    ignore: ['/pages/api/**/*.*'],
 })
