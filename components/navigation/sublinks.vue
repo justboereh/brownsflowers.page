@@ -57,11 +57,8 @@ watchDebounced(
                         />
                     </navigation-group>
 
-                    <navigation-group
-                        :text="item.list[1].text"
-                        class="max-w-lg"
-                    >
-                        <div class="flex flex-wrap gap-x-8 gap-2">
+                    <navigation-group :text="item.list[1].text">
+                        <div class="grid grid-cols-2 gap-x-8 gap-2">
                             <navigation-link
                                 v-for="item of item.list[1].list"
                                 :key="item.item.href"

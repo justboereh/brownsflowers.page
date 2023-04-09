@@ -13,11 +13,11 @@ const types = {
 
 <template>
     <nav
-        class="sticky h-16 md-lg:h-24 px-4 top-0 bg-white shadow-lg shadow-black/5 border-b border-light-700 transition duration-200"
+        class="fixed h-16 md-lg:h-24 w-full px-4 top-0 bg-white shadow-lg shadow-black/5 border-b border-light-700 transition duration-200"
     >
         <div class="h-full w-full flex items-center gap-4 max-w-5xl mx-auto">
             <a href="/" class="h-full flex items-center">
-                <logo-full class="h-2/3" />
+                <svg-logo-full class="h-2/3" />
             </a>
 
             <span class="flex-grow" />
