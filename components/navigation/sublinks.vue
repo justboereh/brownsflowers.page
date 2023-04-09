@@ -57,7 +57,10 @@ watchDebounced(
                         />
                     </navigation-group>
 
-                    <navigation-group text="Featured Bouquets" class="max-w-lg">
+                    <navigation-group
+                        :text="item.list[1].text"
+                        class="max-w-lg"
+                    >
                         <div class="flex flex-wrap gap-x-8 gap-2">
                             <navigation-link
                                 v-for="item of item.list[1].list"
