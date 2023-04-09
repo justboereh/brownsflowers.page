@@ -1,5 +1,5 @@
 <script setup>
-import NavigationLink from '@@/scripts/navigation links'
+import NavigationLink from '~/assets/navigation links'
 </script>
 
 <template>
