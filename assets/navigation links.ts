@@ -37,7 +37,7 @@ export default [
                 type: 'link',
                 item: {
                     text: 'Easter Flowers',
-                    href: '/bouquets?occasions=easter flowers',
+                    href: '/bouquets?occasions=Easter Flowers',
                 },
             },
             {
@@ -67,84 +67,84 @@ export default [
                                     type: 'link',
                                     item: {
                                         text: 'Anniversary',
-                                        href: '/bouquets?occasions=anniversary',
+                                        href: '/bouquets?occasions=Anniversary',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Birthday',
-                                        href: '/bouquets?occasions=birthday',
+                                        href: '/bouquets?occasions=Birthday',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Easter',
-                                        href: '/bouquets?occasions=easter',
+                                        href: '/bouquets?occasions=Easter',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Get Well',
-                                        href: '/bouquets?occasions=get well',
+                                        href: '/bouquets?occasions=Get Well',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Just Because',
-                                        href: '/bouquets?occasions=just becuase',
+                                        href: '/bouquets?occasions=Just Becuase',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Love & romance',
-                                        href: '/bouquets?occasions=love romance',
+                                        href: '/bouquets?occasions=Love Romance',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
-                                        text: 'Making Someone Smile',
-                                        href: '/bouquets?occasions=making someone smile',
+                                        text: 'Make Someone Smile',
+                                        href: '/bouquets?occasions=Make Someone Smile',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'New Baby',
-                                        href: '/bouquets?occasions=new baby',
+                                        href: '/bouquets?occasions=New Baby',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Passover',
-                                        href: '/bouquets?occasions=passover',
+                                        href: '/bouquets?occasions=Passover',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Sympathy',
-                                        href: '/bouquets?occasions=smypathy',
+                                        href: '/bouquets?occasions=Smypathy',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Thank You',
-                                        href: '/bouquets?occasions=thank you',
+                                        href: '/bouquets?occasions=Thank You',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Wedding',
-                                        href: '/bouquets?occasions=wedding',
+                                        href: '/bouquets?occasions=Wedding',
                                     },
                                 },
                             ],
@@ -179,49 +179,49 @@ export default [
                                     type: 'link',
                                     item: {
                                         text: 'Flower in a Gift',
-                                        href: '/bouquets?flowers=fiag',
+                                        href: '/bouquets?flowers=Fiag',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Lavish',
-                                        href: '/bouquets?flowers=lavish',
+                                        href: '/bouquets?flowers=Lavish',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Modern',
-                                        href: '/bouquets?flowers=modern',
+                                        href: '/bouquets?flowers=Modern',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Plants',
-                                        href: '/bouquets?flowers=plants',
+                                        href: '/bouquets?flowers=Plants',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Roses',
-                                        href: '/bouquets?flowers=roses',
+                                        href: '/bouquets?flowers=Roses',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Spring Bouquets',
-                                        href: '/bouquets?flowers=spring bouquets',
+                                        href: '/bouquets?flowers=Spring Bouquets',
                                     },
                                 },
                                 {
                                     type: 'link',
                                     item: {
                                         text: 'Tulips',
-                                        href: '/bouquets?flowers=tulips',
+                                        href: '/bouquets?flowers=Tulips',
                                     },
                                 },
                             ],
