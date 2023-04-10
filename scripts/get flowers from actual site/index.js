@@ -64,6 +64,13 @@ async function SearchFlowers(url) {
                 ({ name }) => name === newflower.name
             )
 
+            if (newflower[filteritem.name]) {
+                AllPossibleFilters[filteritem.name] = [
+                    ...AllPossibleFilters[filteritem.name],
+                    ...newflower[filteritem.name],
+                ]
+            }
+
             if (index < 0) {
                 Flowers.push(newflower)
 
@@ -91,6 +98,7 @@ async function SearchFlowers(url) {
 
         writeFileSync('./Flowers.json', JSON.stringify(Flowers, null, '\t'))
 
+
         filterpage.close()
     }
 
@@ -99,25 +107,21 @@ async function SearchFlowers(url) {
 
 async function getFilters(page) {
     return await page.evaluate(() => {
-        function capitalizeFirstLetter(str) {
-            return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
-        }
-
         const filters = []
         const elements = document.querySelectorAll('#filterNav fieldset')
 
         for (const filterEl of elements) {
-            let legend = capitalizeFirstLetter(
-                filterEl.querySelector('legend').innerText
-            )
+            let legend = filterEl
+                .querySelector('legend')
+                .innerText.toLowerCase()
 
-            if (legend === 'Price ranges') continue
+            if (legend === 'price ranges') continue
 
             const inputs = filterEl.querySelectorAll('ul > li  > input')
 
             for (const input of inputs) {
                 filters.push({
-                    name: legend.toLowerCase() + 's',
+                    name: legend + 's',
                     value: input.getAttribute('name'),
                     href: input.value,
                 })
@@ -258,7 +262,14 @@ async function getFlowers(page) {
             return sizes
         }, flower)
 
-        flower.starting = flower.sizes[0].price
+        if (
+            flower &&
+            flower.sizes &&
+            flower.sizes[0] &&
+            flower.sizes[0].price
+        ) {
+            flower.starting = flower.sizes[0].price
+        }
 
         flowers[index] = flower
     }
