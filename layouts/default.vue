@@ -1,9 +1,6 @@
 <script setup>
-import { useLocalStorage } from '@vueuse/core'
-import { watchPausable } from '@vueuse/shared'
-
-const drawerEnabled = useState('useDrawerEnabled', () => false)
-const searchText = useState('useSearchText', () => '')
+useState('useDrawerEnabled', () => false)
+useState('useSearchText', () => '')
 </script>
 
 <template>
@@ -21,7 +18,7 @@ const searchText = useState('useSearchText', () => '')
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 body {
     font-family: 'Montserrat', sans-serif;

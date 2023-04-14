@@ -9,7 +9,7 @@ const drawerEnabled = useState('useDrawerEnabled')
 <template>
     <div
         ref="drawerElement"
-        class="fixed bottom-0 left-0 transform transition duration-200 w-full overflow-hidden"
+        class="fixed bottom-0 left-0 transform transition duration-200 w-full overflow-hidden z-11"
         :class="
             drawerEnabled
                 ? '<md-lg:(bg-black/50  backdrop-blur) md-lg:(pointer-events-none)'

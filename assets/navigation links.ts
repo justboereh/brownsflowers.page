@@ -1,33 +1,26 @@
-type Link = {
-    text: string
-    href: string
+import { flowers, occasions } from './all possible filters'
+
+function sort(arr: Array<string>) {
+    return arr.sort(function (a: string, b: string) {
+        return ('' + a).localeCompare(b)
+    })
 }
 
-type Product = {
-    image: string
-    alt: string
-    href: string
-    price: string
-}
+const flowerLinks = sort(flowers).map((flower) => ({
+    type: 'link',
+    item: {
+        text: flower,
+        href: `/bouquets?flowers=${flower}`,
+    },
+}))
 
-type Bouquets = {
-    list: Array<string>
-}
-
-type Sublinks = {
-    text: string
-    list: Array<LinksGroup>
-}
-
-type Links = {
-    type: 'sublinks' | 'bouquets' | 'link'
-    item: Sublinks | Bouquets | Link
-}
-
-type LinksGroup = {
-    text: string
-    list: Array<Links>
-}
+const occasionLinks = sort(occasions).map((occasion) => ({
+    type: 'link',
+    item: {
+        text: occasion,
+        href: `/bouquets?occasions=${occasion}`,
+    },
+}))
 
 export default [
     {
@@ -62,92 +55,7 @@ export default [
                         },
                         {
                             text: 'Occasions',
-                            list: [
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Anniversary',
-                                        href: '/bouquets?occasions=Anniversary',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Birthday',
-                                        href: '/bouquets?occasions=Birthday',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Easter',
-                                        href: '/bouquets?occasions=Easter',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Get Well',
-                                        href: '/bouquets?occasions=Get Well',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Just Because',
-                                        href: '/bouquets?occasions=Just Becuase',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Love & romance',
-                                        href: '/bouquets?occasions=Love Romance',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Make Someone Smile',
-                                        href: '/bouquets?occasions=Make Someone Smile',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'New Baby',
-                                        href: '/bouquets?occasions=New Baby',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Passover',
-                                        href: '/bouquets?occasions=Passover',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Sympathy',
-                                        href: '/bouquets?occasions=Smypathy',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Thank You',
-                                        href: '/bouquets?occasions=Thank You',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Wedding',
-                                        href: '/bouquets?occasions=Wedding',
-                                    },
-                                },
-                            ],
+                            list: occasionLinks,
                         },
                     ],
                 },
@@ -174,57 +82,7 @@ export default [
                         },
                         {
                             text: 'Flowers',
-                            list: [
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Flower in a Gift',
-                                        href: '/bouquets?flowers=Fiag',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Lavish',
-                                        href: '/bouquets?flowers=Lavish',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Modern',
-                                        href: '/bouquets?flowers=Modern',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Plants',
-                                        href: '/bouquets?flowers=Plants',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Roses',
-                                        href: '/bouquets?flowers=Roses',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Spring Bouquets',
-                                        href: '/bouquets?flowers=Spring Bouquets',
-                                    },
-                                },
-                                {
-                                    type: 'link',
-                                    item: {
-                                        text: 'Tulips',
-                                        href: '/bouquets?flowers=Tulips',
-                                    },
-                                },
-                            ],
+                            list: flowerLinks,
                         },
                     ],
                 },
@@ -275,4 +133,4 @@ export default [
             },
         ],
     },
-] as Array<LinksGroup>
+]

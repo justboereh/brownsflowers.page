@@ -13,7 +13,7 @@ const types = {
 
 <template>
     <nav
-        class="fixed h-16 md-lg:h-24 w-full px-4 top-0 bg-white shadow-lg shadow-black/5 border-b border-light-700 transition duration-200"
+        class="fixed z-10 h-16 md-lg:h-24 w-full px-4 top-0 bg-white border-b border-light-700 transition duration-200"
     >
         <div class="h-full w-full flex items-center gap-4 max-w-5xl mx-auto">
             <a href="/" class="h-full flex items-center">
