@@ -21,12 +21,12 @@ import {
                 @click="update(color)"
             >
                 <span
-                    class="h-8 grid place-items-center rounded-full border border-light-700"
+                    class="h-8 grid place-items-center rounded-full border border-light-900"
                     :style="`background: ${color}; aspect-ratio: 1`"
                 >
                     <span
                         class="bg-white rounded-full grid place-items-center p-0.5"
-                        :class="selected.includes(color) ? '' : 'opacity-0'"
+                        :class="selected(color) ? '' : 'opacity-0'"
                     >
                         <icon name="fluent:checkmark-16-regular" />
                     </span>
@@ -48,8 +48,8 @@ import {
                 @click="update(occasion)"
             >
                 <span
-                    class="border border-light-700 grid place-items-center"
-                    :class="selected.includes(occasion) ? '' : 'text-black/0'"
+                    class="border border-light-900 grid place-items-center"
+                    :class="selected(occasion) ? '' : 'text-black/0'"
                 >
                     <icon name="fluent:checkmark-16-regular" />
                 </span>
@@ -72,8 +72,8 @@ import {
                 @click="update(flower)"
             >
                 <span
-                    class="border border-light-700 grid place-items-center"
-                    :class="selected.includes(flower) ? '' : 'text-black/0'"
+                    class="border border-light-900 grid place-items-center"
+                    :class="selected(flower) ? '' : 'text-black/0'"
                 >
                     <icon name="fluent:checkmark-16-regular" />
                 </span>
@@ -96,8 +96,8 @@ import {
                 @click="update(style)"
             >
                 <span
-                    class="border border-light-700 grid place-items-center"
-                    :class="selected.includes(style) ? '' : 'text-black/0'"
+                    class="border border-light-900 grid place-items-center"
+                    :class="selected(style) ? '' : 'text-black/0'"
                 >
                     <icon name="fluent:checkmark-16-regular" />
                 </span>

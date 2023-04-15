@@ -42,7 +42,7 @@ watchDebounced(
             <div class="mx-auto max-w-5xl w-full flex justify-end">
                 <div
                     ref="ContentElement"
-                    class="p-4 bg-white border max-w-full border-light-700 rounded shadow-lg shadow-black/5 cursor-auto flex gap-8 transform transition duration-200"
+                    class="p-4 bg-white border max-w-full border-light-900 rounded shadow-lg shadow-black/5 cursor-auto flex gap-8 transform transition duration-200"
                     :class="
                         dropdownEnabled
                             ? 'pointer-events-auto'
@@ -72,7 +72,7 @@ watchDebounced(
         </div>
 
         <!-- <div
-            class="absolute top-full mt-2 right-0 p-4 bg-white border border-light-700 rounded shadow-lg shadow-black/5 cursor-auto flex gap-8 transform transition duration-200"
+            class="absolute top-full mt-2 right-0 p-4 bg-white border border-light-900 rounded shadow-lg shadow-black/5 cursor-auto flex gap-8 transform transition duration-200"
             :class="
                 dropdownEnabled
                     ? ''

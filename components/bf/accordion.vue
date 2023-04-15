@@ -5,7 +5,7 @@ const contentVisible = ref(false)
 </script>
 
 <template>
-    <div class="border border-light-700 rounded">
+    <div class="border border-light-900 rounded">
         <button
             class="flex items-center justify-between gap-4 w-full p-4"
             @click="contentVisible = !contentVisible"

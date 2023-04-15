@@ -4,13 +4,15 @@ const searchText = useState('useSearchText') as Ref<string>
 function Search() {
     if (searchText.value.trim() === '') return
 
-    useRouter().push('/bouquets?q=' + encodeURIComponent(searchText.value.trim()))
+    useRouter().push(
+        '/bouquets?q=' + encodeURIComponent(searchText.value.trim())
+    )
 }
 </script>
 
 <template>
     <form
-        class="border border-light-700 hover:border-brand-purple focus:border-brand-purple transition duration-200 rounded w-xs <md-lg:w-full flex"
+        class="border border-light-900 hover:border-brand-purple focus:border-brand-purple transition duration-200 rounded w-xs <md-lg:w-full flex"
         @submit.prevent="Search"
     >
         <input
