@@ -1,9 +1,6 @@
 <script setup>
-import * as PossibleFilters from '@/assets/all possible filters'
-import { useRouteQuery } from '@vueuse/router'
-
 const {
-    $bouquets: { params },
+    $bouquets: { params, keep },
 } = useNuxtApp()
 const Props = defineProps({ list: Array, name: String })
 
@@ -13,6 +10,8 @@ const selected = computed(() => (value) => params[Props.name].includes(value))
 
 async function Update(value) {
     const index = params[Props.name].indexOf(value)
+
+    keep.value = false
 
     if (index === -1) return params[Props.name].push(value)
 

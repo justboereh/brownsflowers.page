@@ -15,9 +15,10 @@ export default defineEventHandler(async ({ node, context }) => {
         }
     }
 
-    let result = await context.deta
-        .Base('bouquets')
-        .fetch(query, { limit: FlowersLimit })
+    let result = await context.deta.Base('bouquets').fetch(query, {
+        limit: FlowersLimit,
+        last: qs.last ? qs.last : undefined,
+    })
 
     if (!qs.q) return result
 
@@ -44,9 +45,10 @@ export default defineEventHandler(async ({ node, context }) => {
     checkFlowers(result.items)
 
     while (result.last && flowers.length < FlowersLimit) {
-        result = await context.deta
-            .Base('bouquets')
-            .fetch(query, { limit: FlowersLimit })
+        result = await context.deta.Base('bouquets').fetch(query, {
+            limit: FlowersLimit,
+            last: qs.last ? qs.last : undefined,
+        })
 
         checkFlowers(result.items)
     }

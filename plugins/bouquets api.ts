@@ -1,14 +1,12 @@
-import { refDebounced, whenever } from '@vueuse/core'
+import { refDebounced, watchDebounced, whenever } from '@vueuse/core'
 import type { Params, Bouquet, FetchRespone } from '@/index'
-
-function joinValues(arr: Array<string>) {
-    return arr.map((x) => x.trim()).join(',')
-}
 
 export default defineNuxtPlugin(async () => {
     const keptBouquets = ref<Array<Bouquet>>([])
     const bouquets = ref<Array<Bouquet>>([])
+    const keep = ref<boolean>(false)
     const last = ref<string>()
+    const URL = ref<string>('')
 
     const params = reactive<Params>({
         colors: [],
@@ -16,49 +14,52 @@ export default defineNuxtPlugin(async () => {
         occasions: [],
         styles: [],
         q: '',
-        last: '',
     })
 
-    const computedURL = computed<string>(() => {
-        const searchParams = new URLSearchParams()
+    const { data: fetchResponse, pending } = await useFetch<FetchRespone>(URL)
 
-        if (params.q !== '') searchParams.set('q', params.q.trim())
-        if (params.last !== '') searchParams.set('last', params.last)
+    watchDebounced(
+        [params, keep],
+        () => {
+            console.log(keep.value)
 
-        for (const paramname of ['colors', 'flowers', 'occasions', 'styles']) {
-            if (params[paramname].length < 1) continue
+            const searchParams = new URLSearchParams()
 
-            searchParams.set(
-                paramname,
-                joinValues(params[paramname] as string[])
-            )
-        }
+            if (params.q !== '') searchParams.set('q', params.q.trim())
 
-        console.log(`/api/bouquets?${searchParams.toString()}`)
-
-        return `/api/bouquets?${searchParams.toString()}`
-    })
-
-    const { data: fetchResponse, pending } = await useFetch<FetchRespone>(
-        refDebounced(computedURL, 500),
-        {
-            immediate: true,
-        }
-    )
-
-    whenever(
-        fetchResponse,
-        ({ items, last: rLast }) => {
-            if (params.last) {
-                keptBouquets.value = [...keptBouquets.value, ...bouquets.value]
+            if (keep.value && last.value) {
+                searchParams.set('last', last.value satisfies string)
             }
 
-            bouquets.value = items
+            for (const paramname of [
+                'colors',
+                'flowers',
+                'occasions',
+                'styles',
+            ]) {
+                if (params[paramname].length < 1) continue
 
-            last.value = rLast
+                const values = (params[paramname] as string[])
+                    .map((x) => x.trim())
+                    .join(',')
+
+                searchParams.set(paramname, values)
+            }
+
+            URL.value = `/api/bouquets?${searchParams.toString()}`
         },
-        { immediate: true }
+        { immediate: true, debounce: 500 }
     )
+
+    whenever(fetchResponse, ({ items, last: rLast }) => {
+        keptBouquets.value = [...keptBouquets.value, ...bouquets.value]
+
+        if (!keep.value) keptBouquets.value = []
+
+        bouquets.value = items
+
+        last.value = rLast
+    })
 
     return {
         provide: {
@@ -70,6 +71,7 @@ export default defineNuxtPlugin(async () => {
                 pending,
                 last,
                 params,
+                keep,
             },
         },
     }

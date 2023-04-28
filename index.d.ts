@@ -14,6 +14,7 @@ declare module 'vue' {
             list: Array<Bouquet>
             params: Params
             last: string
+            keep: boolean
         }
     }
 }
@@ -26,7 +27,6 @@ export type Params = {
     styles: Array<string>
     occasions: Array<string>
     q: string
-    last: string
     [index: string]: string | Array<string>
 }
 
