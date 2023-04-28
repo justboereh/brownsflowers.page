@@ -26,7 +26,7 @@ const sublinksEnabled = ref(false)
     >
         <div class="px-4">
             <button
-                class="w-full py-2 text-left rounded"
+                class="w-full py-2 text-left"
                 @click="sublinksEnabled = false"
             >
                 <icon name="fluent:chevron-left-16-filled" class="w-3" />

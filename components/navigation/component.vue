@@ -39,7 +39,7 @@ const types = {
                     </nuxt-link>
 
                     <button
-                        class="md-lg:hidden w-10 h-10 grid place-items-center border border-light-900 rounded"
+                        class="md-lg:hidden w-10 h-10 grid place-items-center border border-light-900"
                         @click="drawerEnabled = true"
                     >
                         <icon name="fluent:line-horizontal-3-20-filled" />

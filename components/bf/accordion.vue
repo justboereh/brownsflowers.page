@@ -5,12 +5,12 @@ const contentVisible = ref(false)
 </script>
 
 <template>
-    <div class="border border-light-900 rounded">
+    <div class="border border-light-900">
         <button
             class="flex items-center justify-between gap-4 w-full p-4"
             @click="contentVisible = !contentVisible"
         >
-            <header class="text-lg">{{ text }}</header>
+            <header class="text-lg text-left">{{ text }}</header>
 
             <div
                 class="h-6 w-6 relative grid place-items-center transform transition duration-200"

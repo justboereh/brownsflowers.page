@@ -107,7 +107,7 @@
 
             <div class="flex flex-col gap-4 whitespace-nowrap">
                 <div
-                    class="border border-light-900 bg-white shadow-lg shadow-black/5 p-4 rounded flex flex-col gap-4"
+                    class="border border-light-900 bg-white p-4 flex flex-col gap-4"
                 >
                     <a href="tel:4797543436" class="flex items-center gap-2">
                         <icon name="fluent:phone-16-regular" />
@@ -132,7 +132,7 @@
                 </div>
 
                 <div
-                    class="border border-light-900 bg-white shadow-lg shadow-black/5 p-4 rounded flex flex-col gap-4"
+                    class="border border-light-900 bg-white p-4 flex flex-col gap-4"
                 >
                     <table>
                         <tbody>

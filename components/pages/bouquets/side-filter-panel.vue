@@ -21,11 +21,11 @@ import {
                 @click="update(color)"
             >
                 <span
-                    class="h-8 grid place-items-center rounded-full border border-light-900"
+                    class="h-8 grid place-items-center border border-light-900"
                     :style="`background: ${color}; aspect-ratio: 1`"
                 >
                     <span
-                        class="bg-white rounded-full grid place-items-center p-0.5"
+                        class="bg-white grid place-items-center p-0.5"
                         :class="selected(color) ? '' : 'opacity-0'"
                     >
                         <icon name="fluent:checkmark-16-regular" />

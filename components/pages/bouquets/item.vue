@@ -29,7 +29,7 @@ defineProps({ item: Object })
 
             <span
                 v-if="item.best || item.new"
-                class="bg-brand-purple text-white px-2 rounded-full"
+                class="bg-brand-purple text-white px-2"
             >
                 {{ item.best ? 'Best Seller' : 'New' }}
             </span>

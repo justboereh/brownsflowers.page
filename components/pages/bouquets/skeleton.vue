@@ -12,7 +12,7 @@
             :style="`animation-delay: ${layer * 100}ms;`"
         >
             <div
-                class="bg-light-700 w-full rounded grid place-items-center"
+                class="bg-light-700 w-full grid place-items-center"
                 style="aspect-ratio: 4/5"
             >
                 <icon name="fluent:image-16-regular" />

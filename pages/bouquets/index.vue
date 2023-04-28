@@ -55,7 +55,7 @@ const bouquetList = computed(() => {
 
                 <div v-if="last" class="flex justify-center py-4">
                     <button
-                        class="border border-dark-50 rounded px-4 py-2"
+                        class="border border-dark-50 px-4 py-2"
                         @click=";(keep = fasle), (keep = true)"
                     >
                         Load more

@@ -12,7 +12,7 @@ function Search() {
 
 <template>
     <form
-        class="border border-light-900 hover:border-brand-purple focus:border-brand-purple transition duration-200 rounded w-xs <md-lg:w-full flex"
+        class="border border-light-900 hover:border-brand-purple focus:border-brand-purple transition duration-200 w-xs <md-lg:w-full flex"
         @submit.prevent="Search"
     >
         <input

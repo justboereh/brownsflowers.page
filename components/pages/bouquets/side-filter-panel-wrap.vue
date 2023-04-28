@@ -27,7 +27,7 @@ async function Update(value) {
             {{ name }}
 
             <span
-                class="font-normal bg-brand-purple text-white rounded-full h-full flex gap-1 items-center px-2 text-sm group"
+                class="font-normal bg-brand-purple text-white h-full flex gap-1 items-center px-2 text-sm group"
             >
                 {{ params[Props.name].length }}
 
