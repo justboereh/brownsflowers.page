@@ -21,8 +21,6 @@ export default defineNuxtPlugin(async () => {
     watchDebounced(
         [params, keep],
         () => {
-            console.log(keep.value)
-
             const searchParams = new URLSearchParams()
 
             if (params.q !== '') searchParams.set('q', params.q.trim())
