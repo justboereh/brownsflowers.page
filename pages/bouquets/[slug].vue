@@ -1,38 +1,10 @@
 <script setup>
-const route = useRoute()
+import { useLocalStorage, watchDebounced } from '@vueuse/core'
+import Extras from '@/assets/extras'
 
-const extras = [
-    {
-        src: 'https://assets.eflorist.com/images/product/balloon-image.jpg',
-        text: 'Mylar Balloons',
-        prices: [
-            { text: null, price: 0 },
-            { text: '1', price: 5.99 },
-            { text: '2', price: 10.99 },
-            { text: '3', price: 15.99 },
-        ],
-    },
-    {
-        src: 'https://assets.eflorist.com/images/product/bear-image.jpg',
-        text: 'Stuffed Animals',
-        prices: [
-            { text: null, price: 0 },
-            { text: 'Small', price: 5.99 },
-            { text: 'Medium', price: 19.99 },
-            { text: 'Large', price: 29.99 },
-        ],
-    },
-    {
-        src: 'https://assets.eflorist.com/images/product/chocolate-image.jpg',
-        text: 'Box of Chocolates',
-        prices: [
-            { text: null, price: 0 },
-            { text: 'Small', price: 5.99 },
-            { text: 'Medium', price: 19.99 },
-            { text: 'Large', price: 29.99 },
-        ],
-    },
-]
+const route = useRoute()
+const Cart = useLocalStorage('brownsflowers-cart', [])
+const AddedToCart = ref(false)
 
 const { data: bouquet } = await useFetch(`/api/bouquets/${route.params.slug}`)
 
@@ -70,7 +42,7 @@ const totalCost = computed(() => {
 
     cost += Number(size.value.price.slice(1))
 
-    for (const extra of extras) {
+    for (const extra of Extras) {
         const selected = selectedExtras[extra.text]
 
         if (selected === null) continue
@@ -89,16 +61,56 @@ function SelectExtra(extra, price) {
 
     selectedExtras[extra] = price
 }
+
+function AddToCart() {
+    const extrasToAdd = []
+
+    for (const extra of Extras) {
+        const selected = selectedExtras[extra.text]
+        if (selected === null) continue
+
+        const price = extra.prices.find(({ text }) => text === selected)
+        if (!price) continue
+
+        extrasToAdd.push({
+            name: extra.text,
+            type: price.text,
+            price: price.price,
+        })
+    }
+
+    Cart.value.push({
+        key: bouquet.value.key,
+        size: selectedSize.value,
+        extras: extrasToAdd,
+    })
+
+    AddedToCart.value = true
+}
+
+watchDebounced(
+    AddedToCart,
+    (v) => {
+        if (!v) return
+
+        AddedToCart.value = false
+    },
+    { debounce: 3000 }
+)
 </script>
 
 <template>
     <max-wrap v-if="bouquet">
-        {{}}
-        <div>
-            <div>
+        <div class="flex <md:flex-col gap-8">
+            <div class="flex-grow">
                 <div></div>
                 <div>
-                    <img :src="image" :alt="bouquet.name" />
+                    <img
+                        class="mx-auto"
+                        :src="image"
+                        :alt="bouquet.name"
+                        loading="lazy"
+                    />
 
                     <div class="text-transparent">
                         <button
@@ -117,12 +129,12 @@ function SelectExtra(extra, price) {
                 </div>
             </div>
 
-            <div class="space-y-4">
-                <header class="text-xl">
+            <div class="space-y-4 md:w-2/5">
+                <header class="text-xl md:text-3xl">
                     {{ bouquet.name }}
                 </header>
 
-                <hr />
+                <hr class="md:hidden" />
 
                 <div class="space-y-2">
                     <div class="space-x-4 text-black">
@@ -179,7 +191,7 @@ function SelectExtra(extra, price) {
 
                     <div class="space-y-4 whitespace-nowrap">
                         <div
-                            v-for="extra of extras"
+                            v-for="extra of Extras"
                             class="flex gap-2 items-center"
                         >
                             <img
@@ -217,8 +229,16 @@ function SelectExtra(extra, price) {
                         {{ totalCost }}
                     </p>
 
-                    <button class="bg-brand-purple text-white p-4 py-2">
-                        Add to Cart
+                    <button
+                        class="border p-4 py-2"
+                        :class="
+                            AddedToCart
+                                ? 'border-brand-purple text-brand-purple'
+                                : 'bg-brand-purple border-transparent text-white'
+                        "
+                        @click="AddToCart"
+                    >
+                        {{ AddedToCart ? 'Added' : 'Add to Cart' }}
                     </button>
                 </div>
             </div>

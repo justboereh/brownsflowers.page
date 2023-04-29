@@ -1,34 +1,32 @@
-import { parse } from 'qs'
-
 const FlowersLimit = 16
 const ArrayableQueryNames = ['flowers', 'occasions', 'colors', 'styles']
 
-export default defineEventHandler(async ({ node, context }) => {
-    const qs = parse((node.req.url as string).split('?').splice(1, 1).join(''))
+export default defineEventHandler(async (event) => {
+    const queryString = getQuery(event)
+
     const query: Record<string, string> = {}
-
     for (const queryname of ArrayableQueryNames) {
-        if (!qs[queryname]) continue
+        if (!queryString[queryname]) continue
 
-        for (const value of (qs[queryname] as string).split(',')) {
+        for (const value of (queryString[queryname] as string).split(',')) {
             query[`${queryname}?contains`] = value
         }
     }
 
-    let result = await context.deta.Base('bouquets').fetch(query, {
+    let result = await event.context.deta.Base('bouquets').fetch(query, {
         limit: FlowersLimit,
-        last: qs.last ? qs.last : undefined,
+        last: queryString.last ? queryString.last : undefined,
     })
 
-    if (!qs.q) return result
+    if (!queryString.q) return result
 
     let flowers: Array<Record<string, string>> = []
 
     const islast = false
 
     function flowerPassed(flower: Record<string, string>) {
-        const isInName = flower.name.includes(qs.q as string)
-        const isInDesc = flower.description.includes(qs.q as string)
+        const isInName = flower.name.includes(queryString.q as string)
+        const isInDesc = flower.description.includes(queryString.q as string)
 
         return isInName || isInDesc
     }
@@ -45,9 +43,9 @@ export default defineEventHandler(async ({ node, context }) => {
     checkFlowers(result.items)
 
     while (result.last && flowers.length < FlowersLimit) {
-        result = await context.deta.Base('bouquets').fetch(query, {
+        result = await event.context.deta.Base('bouquets').fetch(query, {
             limit: FlowersLimit,
-            last: qs.last ? qs.last : undefined,
+            last: queryString.last ? queryString.last : undefined,
         })
 
         checkFlowers(result.items)

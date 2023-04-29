@@ -17,11 +17,10 @@ function Search() {
     >
         <input
             v-model="searchText"
-            class="outline-none px-2 h-10 border-transparent flex-grow min-w-0"
+            class="outline-none px-2 h-10 border-transparent flex-grow min-w-0 browns-flowers-search-drawer"
             type="text"
             placeholder="Search..."
             name="browns-flowers-search"
-            id="browns-flowers-search-drawer"
         />
 
         <button

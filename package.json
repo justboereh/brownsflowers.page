@@ -12,12 +12,13 @@
         "@types/qs": "^6.9.7",
         "@vueuse/core": "^9.13.0",
         "@vueuse/router": "^9.13.0",
-        "nuxt": "^3.4.2",
+        "nuxt": "^3.4.3",
         "nuxt-icon": "^0.3.3",
         "nuxt-windicss": "^2.6.0"
     },
     "dependencies": {
         "deta": "^1.1.0",
+        "nanoid": "^4.0.2",
         "qs": "^6.11.1"
     }
 }
